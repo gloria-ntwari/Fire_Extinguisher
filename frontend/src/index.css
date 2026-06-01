@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sidebar: #d9534f;
+  --color-sidebar-dark: #c9302c;
+  --color-page-bg: #fafafb;
+  --color-card: #ffffff;
+  --color-brand: #d9534f;
+  --color-brand-dark: #c9302c;
+  --color-accent-teal: #d9534f;
+  --color-accent-teal-dark: #c9302c;
+  --color-text-primary: #111827;
+  --color-text-secondary: #6b7280;
+  --color-text-muted: #9ca3af;
+  --color-border: #e5e7eb;
+  --color-input-bg: #f3f4f6;
+  --font-sans: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+/* Override browser autofill background on auth inputs */
+.auth-input:-webkit-autofill,
+.auth-input:-webkit-autofill:hover,
+.auth-input:-webkit-autofill:focus,
+.auth-input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset;
+  box-shadow: 0 0 0 1000px transparent inset;
+  -webkit-text-fill-color: #374151;
+  caret-color: #374151;
+  transition: background-color 5000s ease-in-out 0s;
+}

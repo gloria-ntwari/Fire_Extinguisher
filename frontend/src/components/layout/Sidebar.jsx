@@ -16,10 +16,7 @@ const navItems = [
   { to: '/clients', label: 'Locations', icon: Users },
   { to: '/invoices', label: 'Inspections', icon: FileText },
   { to: '/transactions', label: 'Maintenance', icon: ArrowLeftRight },
-  { to: '/expenses', label: 'Equipment', icon: Receipt },
-  { to: '/reports', label: 'Reports', icon: BarChart3 },
-  { to: '/team', label: 'Team', icon: UserCog },
-  { to: '/settings', label: 'Settings', icon: Settings },
+
 ]
 
 export default function Sidebar() {

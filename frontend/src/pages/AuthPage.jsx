@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Lock, Mail, User, Shield } from "lucide-react";
-import fireExtinguisherBg from "../assets/imager1.jpg";
+import fireExtinguisherBg from "../assets/MainContainer.png";
 
 function FormInput({
   icon: Icon,
@@ -49,7 +49,7 @@ export default function AuthPage() {
         <div className="absolute inset-0 bg-black/40" />
 
         {/* Branding content */}
-        <div className="relative z-10 flex flex-col justify-center h-full p-12">
+        <div className="relative z-10 flex flex-col justify-center h-full p-32">
           <div className="text-white max-w-lg">
             <div className="flex items-center gap-3 mb-8">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/20 backdrop-blur-sm">
@@ -69,9 +69,9 @@ export default function AuthPage() {
       </div>
 
       {/* Right side - Form area with semi-transparent background */}
-      <div className="relative w-[760px] min-h-svh">
+      <div className="relative w-[900px] min-h-svh">
         {/* Semi-transparent overlay to make background image subtle */}
-        <div className="absolute inset-0 bg-white/75" />
+        <div className="absolute inset-0 bg-white/90" />
 
         {/* Form content */}
         <div className="relative z-10 flex flex-col justify-center h-full p-12">
@@ -80,85 +80,81 @@ export default function AuthPage() {
             <h1 className="text-4xl font-bold text-gray-900 mb-4">WELCOME!</h1>
           </div>
 
-          {/* Login/Sign Up Button Tabs */}
-          <div className="flex gap-4 mb-8">
-            <button
-              type="button"
-              onClick={() => setMode("login")}
-              className={`flex-1 py-3 px-6 text-sm font-semibold rounded-lg transition-colors ${
-                isLogin
-                  ? "bg-white/90 text-gray-800 shadow-sm"
-                  : " text-gray-600 bg-white/50"
-              }`}
-            >
-              Log In
-            </button>
-            <button
-              type="button"
-              onClick={() => setMode("signup")}
-              className={`flex-1 py-3 px-6 text-sm font-semibold rounded-lg transition-colors ${
-                !isLogin
-                  ? "bg-white/90 text-gray-800 shadow-sm"
-                  : " text-gray-600 bg-white/50"
-              }`}
-            >
-              Sign Up
-            </button>
+          {/* Login/Sign Up segmented control */}
+          <div className="mb-8 max-w-md mx-auto w-full">
+            <div className="flex items-center rounded-xl border border-gray-200/80 bg-white/5 px-2 py-1.5 shadow-sm backdrop-blur-sm">
+              <button
+                type="button"
+                onClick={() => setMode("login")}
+                className={`flex-1 shrink-0 whitespace-nowrap rounded-sm px-5 py-3 text-sm font-semibold leading-none transition-all ${
+                  isLogin
+                    ? "bg-white text-gray-900 shadow-md"
+                    : "bg-transparent text-gray-500 hover:text-gray-700"
+                }`}
+              >
+                Log In
+              </button>
+              <button
+                type="button"
+                onClick={() => setMode("signup")}
+                className={`flex-1 shrink-0 whitespace-nowrap rounded-sm px-5 py-3 text-sm font-semibold leading-none transition-all ${
+                  !isLogin
+                    ? "bg-white text-gray-900 shadow-md"
+                    : "bg-transparent text-gray-500 hover:text-gray-700"
+                }`}
+              >
+                Sign Up
+              </button>
+            </div>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-2">
-            {!isLogin && (
+          <div className="max-w-md mx-auto w-full">
+            <form onSubmit={handleSubmit} className="space-y-2">
+              {!isLogin && (
+                <FormInput
+                  icon={User}
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              )}
               <FormInput
-                icon={User}
-                placeholder="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                icon={Mail}
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-            )}
-            <FormInput
-              icon={Mail}
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <FormInput
-              icon={Lock}
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+              <FormInput
+                icon={Lock}
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
 
-            <button
-              type="submit"
-              className="w-full rounded-full bg-[#D9534F] py-4 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-[#c9302c] mt-8"
-            >
-              {isLogin ? "SIGN IN" : "SIGN UP"}
-            </button>
-          </form>
-
-          {/* Footer links */}
-          <div className="mt-8 text-center space-y-2">
-            {isLogin && (
-              <Link
-                to="#"
-                className="block text-sm text-[#D9534F] hover:underline"
-              >
-                Forgot your password?
-              </Link>
-            )}
-            <p className="text-sm text-gray-600">
-              {isLogin ? "Don't have an account? " : "Already a member? "}
               <button
-                type="button"
-                onClick={() => setMode(isLogin ? "signup" : "login")}
-                className="text-gray-800 hover:underline font-medium"
+                type="submit"
+                className="w-full rounded-full bg-[#D9534F] py-4 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-[#c9302c] mt-8"
               >
-                {isLogin ? "Sign Up" : "Log In"}
+                {isLogin ? "SIGN IN" : "SIGN UP"}
               </button>
-            </p>
+            </form>
+
+            {/* Footer links */}
+            <div className="mt-8 text-center space-y-2">
+              <p className="text-sm text-gray-600">
+                {isLogin ? "Don't have an account? " : "Already a member? "}
+                <button
+                  type="button"
+                  onClick={() => setMode(isLogin ? "signup" : "login")}
+                  className="text-gray-800 hover:underline font-medium"
+                >
+                  {isLogin ? "Sign Up" : "Log In"}
+                </button>
+              </p>
+            </div>
           </div>
         </div>
       </div>
